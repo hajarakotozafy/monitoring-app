@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container } from '../../layouts/Container';
 import { ConnectedUser, NavBarContent, SearchBar } from './NavBar.styled';
 import * as FaIcons from 'react-icons/ai';

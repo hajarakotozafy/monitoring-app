@@ -1,3 +1,4 @@
+import React from 'react';
 import AccountTable from './components/AccountTable';
 import NavBar from './components/NavBar';
 

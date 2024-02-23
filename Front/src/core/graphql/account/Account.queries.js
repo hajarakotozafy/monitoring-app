@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const GET_ACCOUNTS = gql`
     {
-        accounts{
+        getAccounts{
             id
             account_number
             account_owner

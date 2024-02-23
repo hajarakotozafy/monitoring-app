@@ -11,7 +11,11 @@ db.sequelize.sync()
   console.log("Failed to sync database: " + err.message)
 })
 
-const yoga = createYoga({schema: Schema, context: { ...fakeData, db }});
+const yoga = createYoga({
+  cors:{
+    credentials: true
+  },
+  schema: Schema, context: { ...fakeData, db }});
 
 const app = createServer(yoga);
 
