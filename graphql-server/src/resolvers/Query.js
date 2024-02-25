@@ -13,6 +13,13 @@ const Query = {
             const data = await db.account.findByPk(id)
             return data;
         } 
+    },
+    getUserById: {
+        description: "Get Specific User",
+        resolve: async (_, { id }, { db }) =>{
+            const data = await db.user.findByPk(id)
+            return data;
+        } 
     }
 }
 

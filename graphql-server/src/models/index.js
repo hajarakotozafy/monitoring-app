@@ -25,5 +25,6 @@ db.sequelize = sequelize;
 
 db.account = require("./account.model")(sequelize, Sequelize);
 db.account_audit = require("./accountAudit.model")(sequelize, Sequelize);
+db.user = require('./user.model')(sequelize, Sequelize);
 
 module.exports = db;
