@@ -10,5 +10,15 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER
         }
     });
+
+    Account.beforeCreate((account,options) => {
+        console.log("Avant ajout")
+    })
+    Account.beforeUpdate((account,options) => {
+        console.log("Avant modification")
+    })
+    Account.beforeDestroy((account,options) => {
+        console.log("Avant supression")
+    })
     return Account
 }
