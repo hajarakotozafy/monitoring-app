@@ -35,7 +35,7 @@ const AccountTable = () => {
                     <tbody>
                         {
                             loading ? (<tr><td colSpan="4" className='loading'>Chargement...</td></tr>) :
-                            error ? (<tr><td colSpan="4" className='error'>Erreur de chargement des données :( ...</td></tr>) : 
+                            error ? (<tr><td colSpan="4" className='error'>{error.message} :( ...</td></tr>) : 
                             data.getAccounts.map(account => (
                                 <React.Fragment key={account.id}>
                                     <tr>
