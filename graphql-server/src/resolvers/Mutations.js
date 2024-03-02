@@ -84,7 +84,6 @@ const Mutation = {
                 )
 
                 user.token = token
-                userContext.setCurrentUser(user.username)
                 return user
             }else{
                 throw new GraphQLError('Incorrect Password')

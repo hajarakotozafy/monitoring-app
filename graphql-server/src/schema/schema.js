@@ -22,11 +22,22 @@ const Schema = createSchema({
             updatedAt: String!
         }
 
+        type AccountAudit {
+            action_type: String!
+            updated_at: String
+            account_number: String
+            account_owner: String
+            account_amount_old: Int
+            account_amount_new: Int
+            username: String
+        }
+
         type Query {
             hello(name: String): String!
             getAccounts: [Account]!
             getAccountById(id: Int): Account!
             getUserById(id: Int): User!
+            getAccountAudit: [AccountAudit]
         }
 
         type Mutation{

@@ -27,6 +27,13 @@ const Query = {
             const data = await ctx.db.user.findByPk(id)
             return data;
         } 
+    },
+    getAccountAudit: {
+        description: "Get All Audit for Accounts",
+        resolve: async (_, _args, ctx) => {
+            await authContext(ctx)
+            return await ctx.db.account_audit.findAll().then(data=>data).catch(err=>console.log(err))
+        }
     }
 }
 
