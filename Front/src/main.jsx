@@ -10,15 +10,22 @@ import { GlobalStyles } from './core/theme/GlobalStyles';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import { AuthProvider } from './context/authContext'
+import { AccountProvider } from './context/accountContext'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ApolloAppProvider>
-      <ThemeProvider theme={Theme}>
-        <Router>
-          <GlobalStyles/>
-          <App />
-        </Router>
-      </ThemeProvider>
-    </ApolloAppProvider>
-  </React.StrictMode>,
+  <AuthProvider>
+    <AccountProvider>
+      <React.StrictMode>
+        <ApolloAppProvider>
+          <ThemeProvider theme={Theme}>
+            <Router>
+              <GlobalStyles/>
+              <App />
+            </Router>
+          </ThemeProvider>
+        </ApolloAppProvider>
+      </React.StrictMode>,
+    </AccountProvider>
+  </AuthProvider>
 )

@@ -6,7 +6,7 @@ import Button from '../Button';
 
 import * as FaIcons from 'react-icons/fa';
 
-import { useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/react-hooks'
 import { GET_ACCOUNTS } from '../../core/graphql/account/Account.queries';
 import Popup from '../Popup';
 

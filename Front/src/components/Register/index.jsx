@@ -1,65 +1,62 @@
-import React from 'react'
-import { LoginContainer, LoginForm, LoginInner, LoginTitle, Logo } from './Login.styled';
-import Lg from '../../assets/images/logo.png'
-import Button from '../Button'
-import { useNavigate } from 'react-router-dom'
-
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import { useForm } from '../../core/utility/hooks'
 import { useMutation } from '@apollo/react-hooks';
 
 import { gql } from 'graphql-tag';
-
-const LOGIN_USER = gql`
-    mutation login(
-        $loginInput: LoginInput!
+import { useNavigate } from 'react-router-dom';
+import { Logo, RegisterContainer, RegisterForm, RegisterInner, RegisterTitle } from './Register.styled';
+import Lg from '../../assets/images/Logo.png';
+import Button from '../Button';
+const REGISTER_USER = gql`
+    mutation Mutation(
+        $registerInput: RegisterInput!
     ){
-        loginUser(
-            loginInput: $loginInput
-        ){
+        registerUser(
+            registerInput: $registerInput
+        ) {
             username
             token
         }
     }
 `
 
-const Login = () => {
-    const navigate = useNavigate();
+const Register = () => {
     const context = useContext(AuthContext);
-    const [ errors, setErrors ] = useState([])
-
-    function loginUserCallback() {
-        loginUser();
+    let navigate = useNavigate();
+    const [errors, setErrors] = useState([])
+    function registerUserCallback() {
+        console.log("callback hit")
+        registerUser();
     }
-
-    const { onChange, onSubmit, values } = useForm(loginUserCallback, {
+    const { onChange, onSubmit, values } = useForm(registerUserCallback,{
         username: '',
-        password: ''
-    })
+        password: '',
+    });
 
-    const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-        update(proxy, { data: { loginUser: userData}}){
+    const [ registerUser, { loading } ] = useMutation(REGISTER_USER, {
+        update(proxy, { data: { registerUser: userData}}){
             context.login(userData);
             navigate('/account');
         },
         onError({ graphQLErrors }){
             setErrors(graphQLErrors);
         },
-        variables: { loginInput: values}
+        variables: { registerInput: values}
     })
+
     return (
-        <LoginContainer>
-        <LoginInner>
+        <RegisterContainer>
+        <RegisterInner>
             <Logo src={Lg}/>
-            <LoginTitle>Connexion</LoginTitle>
-            <LoginForm>
+            <RegisterTitle>Inscription</RegisterTitle>
+            <RegisterForm>
                 <div className="form-control">
                     <label>Nom d'utilisateur</label>
                     <input 
                         type="text" 
                         name="username" 
-                        onChange={onChange}
+                        onChange={onChange} 
                         placeholder="i.e: Caisse-1"
                     />
                 </div>
@@ -84,13 +81,13 @@ const Login = () => {
                         onClick={e=>{
                             e.preventDefault()
                             onSubmit(e)
-                        }}
-                    >Se Connecter</Button>
+                        }
+                    }>S'Inscrire</Button>
                 </div>
-            </LoginForm>
-        </LoginInner>
-        </LoginContainer>
+            </RegisterForm>
+        </RegisterInner>
+        </RegisterContainer>
     )
-}
+} 
 
-export default Login
+export default Register;

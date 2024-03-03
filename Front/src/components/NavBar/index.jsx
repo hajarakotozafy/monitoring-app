@@ -9,10 +9,10 @@ const NavBar = () => {
             <NavBarContent>
                 <p className='brand'>Gestion de <br/><span>SOLDES</span> Bancaire</p>
                 {/* <h2>LOGO</h2> */}
-                <SearchBar>
+                {/* <SearchBar>
                     <FaIcons.AiOutlineSearch/>
                     <input type="text" placeholder='Rechercher un compte'/>
-                </SearchBar>
+                </SearchBar> */}
                 <ConnectedUser>
                     <span>Se déconnecter</span>
                     <div className='initials'>HR</div>

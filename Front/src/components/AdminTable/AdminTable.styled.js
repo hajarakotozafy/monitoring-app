@@ -82,11 +82,9 @@ export const AdminTableContent = styled.div`
                         border-radius: 2px;
                     }
                     &:first-child{
-                        // background: #fff;
                         border-radius: 12px 0 0 12px;
                     }
                     &:last-child{
-                        // background: #fff;
                         border-radius: 0 12px 12px 0;
                         &::before{
                             display: none;
