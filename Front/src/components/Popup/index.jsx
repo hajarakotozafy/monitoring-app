@@ -1,16 +1,21 @@
 import React from 'react';
-import { Overlay, PopupContainer, PopupForm, PopupInner } from './Popup.styled';
+import { LeftSide, Overlay, PopupContainer, PopupForm, PopupInner, RightSide } from './Popup.styled';
 import Button from '../Button';
+import Image from '../../assets/images/account_image.png'
 
 const Popup = ({displayPopup, setDisplayPopup}) => {
     return(
         <PopupContainer>
             <PopupInner>
+                <LeftSide>
+                    <img src={Image}/>
+                </LeftSide>
+                <RightSide>
+
                 <h1>NOUVEAU CLIENT</h1>
                 <PopupForm>
                     <div className='form-control'>
                         <p>Client numéro: 000008</p>
-                        <label htmlFor="">Numéro de Compte :</label>
                         <input type="number" value="000008" disabled hidden/>
                     </div>
                     <div className='form-control'>
@@ -23,6 +28,7 @@ const Popup = ({displayPopup, setDisplayPopup}) => {
                     </div>
                     <Button onClick={()=> setDisplayPopup(!displayPopup)} type='btn--primary'>Enregistrer</Button>
                 </PopupForm>
+                </RightSide>
             </PopupInner>
             <Overlay onClick={()=> setDisplayPopup(!displayPopup)}/>
         </PopupContainer>

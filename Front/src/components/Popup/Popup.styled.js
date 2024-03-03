@@ -34,17 +34,18 @@ export const Overlay = styled.div`
     
 export const PopupInner = styled.div`
     z-index: 11;
-    width: 400px;
+    width: 720px;
     // background: ${props => props.theme.gradients.cardBack};
     padding: 24px;
     background: #fff;
     border-radius: 12px;
     animation: translatePopup 0.4s ease;
+    display: flex;
     h1{
         padding-bottom: 8px;
         font-size: 20px;
         font-weight: 800;
-        text-align: center;
+        color: #2E3235;
     }
     @keyframes translatePopup{
         from{
@@ -64,7 +65,6 @@ export const PopupForm = styled.form`
     color: #767676;
     p{
         font-size: 14px;
-        text-align: center;
     }
     .form-control{
         display: flex;
@@ -84,4 +84,21 @@ export const PopupForm = styled.form`
             // box-shadow: ${props => props.theme.shadows.soft};
         }
     }
+`
+
+export const LeftSide = styled.div`
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 100%;
+    }
+`
+export const RightSide = styled.div`
+    display: flex;
+    align-items: strech;
+    justify-content: center;
+    flex-direction: column;
+    flex:1;
 `
