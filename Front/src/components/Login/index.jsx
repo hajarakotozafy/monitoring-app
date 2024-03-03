@@ -5,11 +5,11 @@ import Button from '../Button'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
-        let navigate = useNavigate();
-        navigate('/account')
+        return navigate('/account')
     }
     return (
         <LoginContainer>
