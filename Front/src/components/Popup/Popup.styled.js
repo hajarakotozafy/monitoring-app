@@ -27,7 +27,8 @@ export const Overlay = styled.div`
     left: 0;
     width:100%;
     height: 100vh;
-    background: rgb(0 ,0 ,0 ,0.3);
+    background: #2E3235;
+    opacity: 0.2;
     z-index: 10;
 `
     
@@ -74,12 +75,13 @@ export const PopupForm = styled.form`
             display: none;
         }
         input{
-            border-radius: 12px;
+            border-radius: 4px;
             outline: none;
             border: none;
             background: #fff;
             padding: 16px;
-            box-shadow: ${props => props.theme.shadows.soft};
+            border: 1px solid #F0F4FD;
+            // box-shadow: ${props => props.theme.shadows.soft};
         }
     }
 `

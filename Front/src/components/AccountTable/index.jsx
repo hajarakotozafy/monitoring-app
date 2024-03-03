@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Container } from '../../layouts/Container';
-import { AccountTableContent, AccountTableHeader, Pagination } from './AccountTable.styled';
+import { AccountTableContent, AccountTableHeader } from './AccountTable.styled';
 import Button from '../Button';
 
 import * as FaIcons from 'react-icons/fa';
