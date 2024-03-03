@@ -1,5 +1,6 @@
 import React from 'react';
 import AccountTable from './components/AccountTable';
+import AdminTable from './components/AdminTable';
 import NavBar from './components/NavBar';
 import Login from './components/Login'
 
@@ -19,7 +20,7 @@ const App = () => {
         }
       >
         <Route path="/account" element={<AccountTable/>}/>
-        <Route path="/admin" element={<h1 style={{marginTop: '200px'}}>ADMIN</h1>}/>
+        <Route path="/admin" element={<AdminTable/>}/>
       </Route>
     </Routes>
   )

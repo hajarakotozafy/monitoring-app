@@ -9,13 +9,13 @@ export const LoginContainer = styled.div`
 `
 
 export const LoginInner = styled.div`
-    box-shadow: ${props => props.theme.shadows.soft};
+    box-shadow: ${props => props.theme.shadows.medium};
     width: 400px;
     height: auto;
     background: #fff;
     display: flex;
     flex-direction: column;
-    padding: 20px 20px 32px 20px;
+    padding: 28px 28px 40px 28px;
     border-radius: 4px;
     gap: 16px;
 `
