@@ -32,7 +32,7 @@ const Query = {
         description: "Get All Audit for Accounts",
         resolve: async (_, _args, ctx) => {
             await authContext(ctx)
-            return await ctx.db.account_audit.findAll().then(data=>data).catch(err=>console.log(err))
+            return await ctx.db.account_audit.findAll({ order: [['id', 'DESC']]}).then(data=>data).catch(err=>console.log(err))
         }
     }
 }

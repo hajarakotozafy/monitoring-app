@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LeftSide, Overlay, PopupContainer, PopupForm, PopupInner, RightSide } from './Popup.styled';
 import Button from '../Button';
 import Image from '../../assets/images/account_image.png'
@@ -40,17 +40,19 @@ const UPDATE_ACCOUNT = gql`
     }
 `
 
-const Popup = ({displayPopup, setDisplayPopup, update=false, id}) => {
-
+const Popup = ({displayPopup, setUpdate, setDisplayPopup, update=false, id}) => {
+    const [num, setNum] = useState('')
+    const [own, setOwn] = useState('')
+    const [am, setAm] = useState('')
     const context = useContext(AccountContext);
 
     function submitAccountCallback(){
         submitAccount()
     }
     const { onChange, onSubmit, values } = useForm(submitAccountCallback, {
-        account_number: '',
-        account_owner: '',
-        account_amount: ''
+        account_number: update?num:'',
+        account_owner: update?own:'',
+        account_amount: update?am:''
     })
 
     const returnVar = (val) =>{
@@ -83,6 +85,15 @@ const Popup = ({displayPopup, setDisplayPopup, update=false, id}) => {
         },
         variables: returnVar(values)
         })
+
+    useEffect(() =>{
+        if(update){
+            let d = context.accounts.filter(a=>a.id==id)
+            setNum(d[0].account_number)
+            setOwn(d[0].account_owner)
+            setAm(d[0].account_amount)
+        }
+    },[])
     return(
         <PopupContainer>
             <PopupInner>
@@ -94,36 +105,56 @@ const Popup = ({displayPopup, setDisplayPopup, update=false, id}) => {
                 <h1>{update?'MODIFIER CLIENT':'NOUVEAU CLIENT'}</h1>
                 <PopupForm>
                     <div className='form-control'>
-                        <p>Client numéro: 000008</p>
+                        {/* <p>Client numéro: 000008</p> */}
                         <input type="text" 
                             placeholder="000008"
                             name="account_number"
-                            onChange={onChange} required
+                            onChange={(e)=>{
+                                if(update)setNum(e.target.value)
+
+                                onChange(e)
+                            }} required
+                            value={update?num:''}
                         />
                     </div>
                     <div className='form-control'>
                         <label htmlFor="">Nom du Client :</label>
                         <input type="text" 
                             name="account_owner"
-                            onChange={onChange}
+                            onChange={(e)=>{
+                                if(update)setOwn(e.target.value)
+
+                                onChange(e)
+                            }}
+                            value={update?own:''}
                             placeholder='Nom du client' required/>
                     </div>
                     <div className='form-control'>
                         <label htmlFor="">Montant :</label>
                         <input type="number" 
                             name="account_amount"
-                            onChange={onChange}
+                            onChange={(e)=>{
+                                if(update)setAm(e.target.value)
+
+                                onChange(e)
+                            }}
+                            value={update?am:''}
                             placeholder='Montant'required/>
                     </div>
                     <Button onClick={(e)=> {
                         e.preventDefault()
                         onSubmit(e)
+                        setUpdate(false)
                         setDisplayPopup(!displayPopup)
                     }} type='btn--primary'>Enregistrer</Button>
                 </PopupForm>
                 </RightSide>
             </PopupInner>
-            <Overlay onClick={()=> setDisplayPopup(!displayPopup)}/>
+            <Overlay onClick={()=> {
+                    setUpdate(false)
+                    setDisplayPopup(!displayPopup)
+                }
+                }/>
         </PopupContainer>
     )
 }

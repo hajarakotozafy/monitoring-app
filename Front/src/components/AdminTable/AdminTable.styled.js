@@ -14,7 +14,7 @@ export const AdminTableContent = styled.div`
                     width: 15%;
                 }
                 th:nth-child(3){
-                    width: 15%;
+                    width: 12%;
                 }
                 th:nth-child(4){
                     width: 20%;
@@ -25,7 +25,7 @@ export const AdminTableContent = styled.div`
                 th:nth-child(6){
                     width: 13%;
                 }
-                th:nth-child(7){
+                th:nth-child(10){
                     width: 10%;
                 }
 
@@ -103,7 +103,7 @@ export const AdminTableContent = styled.div`
                         background: #fbd0d0;
                         color: #ea2828;
                     }
-                    &:nth-child(2){
+                    &:nth-child(4){
                         color: #2E313A;
                         font-weight: 500;
                     }
@@ -137,5 +137,31 @@ export const AdminTableHeader = styled.div`
         span{
             font-weight: 800;
         }
+    }
+`
+
+export const Card = styled.div`
+    display: flex;
+    border-radius: 16px;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+    div{
+        font-size: 40px;
+        font-weight: 800;
+        color: white;
+    }
+    &:nth-child(2){
+        background: #4F9464;
+    }
+    &:nth-child(3){
+        background: #6972FF;
+    }
+    &:nth-child(4){
+        background: #e4361b;
+    }
+    p{
+        font-size: 16px;
+        color: #fff;
     }
 `

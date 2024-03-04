@@ -22,6 +22,24 @@ export const NavBarContent = styled.div`
             color: #F6B746;
         }
     }
+    .links{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        a{
+            font-size: 14px;
+            font-weight: 800;
+            color: #2E3235;
+            text-decoration: none;
+            tranistion: 0.4s ease;
+            &:hover{
+                color: ${props => props.theme.colors.brandColor};
+            }
+            &.active{
+                color: ${props => props.theme.colors.brandColor};
+            }
+        }
+    }
 `
 
 export const SearchBar = styled.div`
