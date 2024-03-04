@@ -9,7 +9,7 @@ const Query = {
         description: "Get All Accounts",
         resolve: async (_, args, ctx) => {
             await authContext(ctx)
-            return await ctx.db.account.findAll({ order_by: { id: 'ASC'}}).then((data) => data).catch((err) => console.log(err))
+            return await ctx.db.account.findAll({ order: [['id', 'DESC']]}).then((data) => data).catch((err) => console.log(err))
         },
     },
     getAccountById: {

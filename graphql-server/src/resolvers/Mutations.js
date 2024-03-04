@@ -29,6 +29,7 @@ const Mutation = {
             const account = {
                 ...updateAccountInput,
             }
+            account.id=id
             const data = await ctx.db.account.update(account, { where: { id: id}, individualHooks: true})
             return account
         }
@@ -37,8 +38,9 @@ const Mutation = {
         description: "Delete an Account",
         resolve: async (parent, { id }, ctx) => {
             await authContext(ctx)
-            const data = ctx.db.account.destroy({where:{id:id}, individualHooks: true})
-            return data;
+            const data = await ctx.db.account.destroy({where:{id:id}, individualHooks: true})
+            console.log(data)
+            return {id:id};
         }
     },
     registerUser: {

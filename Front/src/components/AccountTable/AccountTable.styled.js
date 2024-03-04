@@ -81,7 +81,9 @@ export const AccountTableContent = styled.div`
                             padding: 8px;
                             cursor: pointer;
                         }
-                        svg:nth-child(1), svg:nth-child(2){
+                        svg:nth-child(1)
+                        // , svg:nth-child(2)
+                        {
                             background: #1E988F;
                             color: #fff;
                             transition: 0.4s ease;
@@ -89,7 +91,7 @@ export const AccountTableContent = styled.div`
                                 background: #187771;
                             }
                         }
-                        svg:nth-child(3){
+                        svg:nth-child(2){
                             background: #E8533D;
                             color: #fff;
                             transition: 0.4s ease;

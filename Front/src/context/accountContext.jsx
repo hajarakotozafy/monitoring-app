@@ -1,15 +1,15 @@
 import React, { useReducer, createContext } from 'react'
 
 const initialAccount = {
-    accounts: null
+    accounts: []
 }
 
 const AccountContext = createContext({
-    accounts: null,
-    updateAccounts: (accountsData) => {}
+    accounts: [],
+    updateAccounts: (accountData) => {}
 });
 
-function accountsReducer(state, action){
+function accountReducer(state, action){
     switch(action.type){
         case 'UPDATE':
             return {
@@ -22,16 +22,16 @@ function accountsReducer(state, action){
 }
 
 function AccountProvider({children}){
-    const [state, dispatch] = useReducer(accountsReducer, initialAccount);
+    const [state, dispatch] = useReducer(accountReducer, initialAccount);
     const updateAccounts = (accountData) => {
         dispatch({
             type: 'UPDATE',
-            payload: accountsData
+            payload: accountData
         })
     }
 
     return (
-        <AccountContext.Provider value={{account: state.account, updateAccounts}}>
+        <AccountContext.Provider value={{accounts: state.accounts, updateAccounts}}>
             {children}
         </AccountContext.Provider>
     )
