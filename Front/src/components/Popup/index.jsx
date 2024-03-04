@@ -52,7 +52,7 @@ const Popup = ({displayPopup, setUpdate, setDisplayPopup, update=false, id}) => 
     const { onChange, onSubmit, values } = useForm(submitAccountCallback, {
         account_number: update?num:'',
         account_owner: update?own:'',
-        account_amount: update?am:''
+        account_amount: update?am:0
     })
 
     const returnVar = (val) =>{
@@ -110,23 +110,24 @@ const Popup = ({displayPopup, setUpdate, setDisplayPopup, update=false, id}) => 
                             placeholder="000008"
                             name="account_number"
                             onChange={(e)=>{
-                                if(update)setNum(e.target.value)
+                                setNum(e.target.value)
 
                                 onChange(e)
                             }} required
-                            value={update?num:''}
+                            value={num}
                         />
                     </div>
                     <div className='form-control'>
                         <label htmlFor="">Nom du Client :</label>
                         <input type="text" 
                             name="account_owner"
+                            onLoad={onChange}
                             onChange={(e)=>{
-                                if(update)setOwn(e.target.value)
+                                setOwn(e.target.value)
 
                                 onChange(e)
                             }}
-                            value={update?own:''}
+                            value={own}
                             placeholder='Nom du client' required/>
                     </div>
                     <div className='form-control'>
@@ -134,11 +135,11 @@ const Popup = ({displayPopup, setUpdate, setDisplayPopup, update=false, id}) => 
                         <input type="number" 
                             name="account_amount"
                             onChange={(e)=>{
-                                if(update)setAm(e.target.value)
+                                setAm(e.target.value)
 
                                 onChange(e)
                             }}
-                            value={update?am:''}
+                            value={am}
                             placeholder='Montant'required/>
                     </div>
                     <Button onClick={(e)=> {

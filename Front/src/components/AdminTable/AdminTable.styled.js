@@ -158,7 +158,7 @@ export const Card = styled.div`
         background: #6972FF;
     }
     &:nth-child(4){
-        background: #e4361b;
+        background: #E8533D;
     }
     p{
         font-size: 16px;

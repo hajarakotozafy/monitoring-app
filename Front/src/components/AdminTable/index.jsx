@@ -54,18 +54,22 @@ const AdminTable = () => {
             <AdminTableContent>
                 <AdminTableHeader>
                     <p><FaIcons.FaDownload/> Enregistrements <span>({loading ? '...' : error ? ' :( ' : data.getAccountAudit.length})</span></p>
-                    <Card>
-                        <div>{data.getAccountAudit.filter(a=>a.action_type=='Ajout').length}</div>
-                        <p>Données<br/>Ajoutées</p>
-                    </Card>
-                    <Card>
-                        <div>{data.getAccountAudit.filter(a=>a.action_type=='Modification').length}</div>
-                        <p>Données<br/>Modifiées</p>
-                    </Card>
-                    <Card>
-                        <div>{data.getAccountAudit.filter(a=>a.action_type=='Suppression').length}</div>
-                        <p>Données<br/>Supprimées</p>
-                    </Card>
+                    {data && (
+                        <>
+                            <Card>
+                                <div>{data.getAccountAudit.filter(a=>a.action_type=='Ajout').length}</div>
+                                <p>Données<br/>Ajoutées</p>
+                            </Card>
+                            <Card>
+                                <div>{data.getAccountAudit.filter(a=>a.action_type=='Modification').length}</div>
+                                <p>Données<br/>Modifiées</p>
+                            </Card>
+                            <Card>
+                                <div>{data.getAccountAudit.filter(a=>a.action_type=='Suppression').length}</div>
+                                <p>Données<br/>Supprimées</p>
+                            </Card>
+                        </>
+                    )}
                 </AdminTableHeader>
 
                 <table>
